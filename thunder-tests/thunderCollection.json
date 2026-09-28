@@ -1,0 +1,2890 @@
+[
+  {
+    "_id": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+    "colName": "School Management API",
+    "created": "2026-01-01T00:00:00.000Z",
+    "sortNum": 10000,
+    "folders": [
+      {
+        "_id": "f5dc2f7c-0422-55fd-9b27-21b21b647a18",
+        "name": "00 - Server",
+        "containerId": "",
+        "created": "2026-01-01T00:00:00.000Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "01 - Authentication",
+        "containerId": "",
+        "created": "2026-01-01T00:00:00.000Z",
+        "sortNum": 11000
+      },
+      {
+        "_id": "c7a1cb73-2e5a-52f7-8544-b6c39bdd7551",
+        "name": "02 - Security",
+        "containerId": "",
+        "created": "2026-01-01T00:00:00.000Z",
+        "sortNum": 12000
+      },
+      {
+        "_id": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "03 - Students",
+        "containerId": "",
+        "created": "2026-01-01T00:00:00.000Z",
+        "sortNum": 13000
+      },
+      {
+        "_id": "d654c91f-ba4f-5a93-a526-43f49b472a86",
+        "name": "04 - Teachers",
+        "containerId": "",
+        "created": "2026-01-01T00:00:00.000Z",
+        "sortNum": 14000
+      },
+      {
+        "_id": "067f4d59-75db-5d9f-b91f-28f987acd596",
+        "name": "05 - Classes",
+        "containerId": "",
+        "created": "2026-01-01T00:00:00.000Z",
+        "sortNum": 15000
+      },
+      {
+        "_id": "730d74db-10a1-54e2-abd9-937a22b38eff",
+        "name": "06 - Subjects",
+        "containerId": "",
+        "created": "2026-01-01T00:00:00.000Z",
+        "sortNum": 16000
+      },
+      {
+        "_id": "78c29890-f467-52c9-8c66-5b8cd5fa5bc3",
+        "name": "07 - Results",
+        "containerId": "",
+        "created": "2026-01-01T00:00:00.000Z",
+        "sortNum": 17000
+      }
+    ],
+    "settings": {
+      "headers": [],
+      "tests": [],
+      "options": {
+        "baseUrl": "http://localhost:5000/"
+      }
+    },
+    "items": [
+      {
+        "_id": "36d61490-16c9-58ec-b3d4-89a6d27f219f",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "f5dc2f7c-0422-55fd-9b27-21b21b647a18",
+        "name": "API Index",
+        "url": "",
+        "method": "get",
+        "sortNum": 10000,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.environment",
+            "action": "istype",
+            "value": "string"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.endpoints",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "e87fe6f2-f894-5b28-b088-559320555cff",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "f5dc2f7c-0422-55fd-9b27-21b21b647a18",
+        "name": "Health Check",
+        "url": "health",
+        "method": "get",
+        "sortNum": 10001,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.uptime",
+            "action": "istype",
+            "value": "number"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "7b08c936-a388-56e6-b377-a92edf81cc2d",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "Register (valid)",
+        "url": "api/auth/register",
+        "method": "post",
+        "sortNum": 10002,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Tolu Akin\",\n  \"email\": \"tolu.akin@school.com\",\n  \"password\": \"Student@123\",\n  \"classId\": 1,\n  \"class\": \"JSS1 Gold\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "201"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.token",
+            "action": "istype",
+            "value": "string"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "11376f36-26b9-5c69-bf7b-b997f7d515f0",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "Register (duplicate email)",
+        "url": "api/auth/register",
+        "method": "post",
+        "sortNum": 10003,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Tolu Akin\",\n  \"email\": \"tolu.akin@school.com\",\n  \"password\": \"Student@123\",\n  \"classId\": 1,\n  \"class\": \"JSS1 Gold\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "409"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "32935515-88f7-5a8f-83ea-3ba4afc36797",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "Register (weak password)",
+        "url": "api/auth/register",
+        "method": "post",
+        "sortNum": 10004,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Weak Pass\",\n  \"email\": \"weak@school.com\",\n  \"password\": \"123\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "400"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "a5e2d33d-1def-540f-a872-311e61ee3e6f",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "Login ADMIN",
+        "url": "api/auth/login",
+        "method": "post",
+        "sortNum": 10005,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"email\": \"admin@school.com\",\n  \"password\": \"Admin@123\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "set-env-var",
+            "custom": "json.data.token",
+            "action": "setto",
+            "value": "{{adminToken}}"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.user.role",
+            "action": "istype",
+            "value": "string"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "1ffcfed0-f379-5d98-8fce-6df3d182acc2",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "Login TEACHER",
+        "url": "api/auth/login",
+        "method": "post",
+        "sortNum": 10006,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"email\": \"teacher@school.com\",\n  \"password\": \"Teacher@123\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "set-env-var",
+            "custom": "json.data.token",
+            "action": "setto",
+            "value": "{{teacherToken}}"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "1ff9cb3d-41b4-50fb-946b-f65116024303",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "Login STUDENT",
+        "url": "api/auth/login",
+        "method": "post",
+        "sortNum": 10007,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"email\": \"student@school.com\",\n  \"password\": \"Student@123\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "set-env-var",
+            "custom": "json.data.token",
+            "action": "setto",
+            "value": "{{studentToken}}"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "3a6aa4f7-3573-5006-aa26-d3249bf18c0e",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "Login (wrong password)",
+        "url": "api/auth/login",
+        "method": "post",
+        "sortNum": 10008,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"email\": \"student@school.com\",\n  \"password\": \"WrongPass@1\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "401"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "6f21a253-d9ff-5f3c-806a-be3b67691bbc",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "Login (unknown email)",
+        "url": "api/auth/login",
+        "method": "post",
+        "sortNum": 10009,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"email\": \"nobody@school.com\",\n  \"password\": \"Student@123\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "401"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "7cb116e9-1f42-5d91-9382-e7ff5d9f58c9",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "Me (current user)",
+        "url": "api/auth/me",
+        "method": "get",
+        "sortNum": 10010,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.user",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "281bbcc9-646f-5be9-ba04-c3cca0a461f8",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "List all users (admin)",
+        "url": "api/auth/users",
+        "method": "get",
+        "sortNum": 10011,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.users",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "8fff7265-1667-5fe9-9c08-a1df7edb5883",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "List all users (student)",
+        "url": "api/auth/users",
+        "method": "get",
+        "sortNum": 10012,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{studentToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "403"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "ac11562f-a382-528d-affa-8403574b09a6",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "Change password",
+        "url": "api/auth/password",
+        "method": "patch",
+        "sortNum": 10013,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"currentPassword\": \"Admin@123\",\n  \"newPassword\": \"Admin@456\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "3045a8d7-2dcd-5a55-8c9d-e1683067eae4",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "Change password (restore)",
+        "url": "api/auth/password",
+        "method": "patch",
+        "sortNum": 10014,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"currentPassword\": \"Admin@456\",\n  \"newPassword\": \"Admin@123\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "c8dcf6ec-5c16-5476-9643-7b164b526c7f",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "341443c9-da5b-5e03-b741-752fdbc94e04",
+        "name": "Logout",
+        "url": "api/auth/logout",
+        "method": "post",
+        "sortNum": 10015,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "f37ea3e9-ff22-5f32-8953-d406368f1e65",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "c7a1cb73-2e5a-52f7-8544-b6c39bdd7551",
+        "name": "Protected route without token",
+        "url": "api/students",
+        "method": "get",
+        "sortNum": 10016,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "401"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "6d982888-5f74-513c-834b-d83bb78fa2ab",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "c7a1cb73-2e5a-52f7-8544-b6c39bdd7551",
+        "name": "Protected route with invalid token",
+        "url": "api/students",
+        "method": "get",
+        "sortNum": 10017,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer not.a.real.jwt",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "401"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "820c4815-5ab5-55b6-9ce4-5f92464bfc9b",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "c7a1cb73-2e5a-52f7-8544-b6c39bdd7551",
+        "name": "Student creates a student",
+        "url": "api/students",
+        "method": "post",
+        "sortNum": 10018,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{studentToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Sneaky Student\",\n  \"email\": \"sneaky@school.com\",\n  \"classId\": 1,\n  \"class\": \"JSS1 Gold\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "403"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "a549f7e9-6a0b-57f3-8552-82b756ffdbb3",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "c7a1cb73-2e5a-52f7-8544-b6c39bdd7551",
+        "name": "Student lists teachers",
+        "url": "api/teachers",
+        "method": "get",
+        "sortNum": 10019,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{studentToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "403"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "757667d3-9e52-593c-b6a3-02ff40b80f1a",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "c7a1cb73-2e5a-52f7-8544-b6c39bdd7551",
+        "name": "Teacher deletes a student",
+        "url": "api/students/1",
+        "method": "delete",
+        "sortNum": 10020,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{teacherToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "403"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "e8c66ce0-d480-5d8f-a6cb-dfcee0155a8b",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "c7a1cb73-2e5a-52f7-8544-b6c39bdd7551",
+        "name": "Teacher edits a teacher",
+        "url": "api/teachers/1",
+        "method": "put",
+        "sortNum": 10021,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{teacherToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Should Not Work\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "403"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "323236d2-1efc-5d15-9807-c4e3b9adf277",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "c7a1cb73-2e5a-52f7-8544-b6c39bdd7551",
+        "name": "Non-numeric id",
+        "url": "api/students/abc",
+        "method": "get",
+        "sortNum": 10022,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "400"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "5b39a5f9-97dd-52a2-9c85-48dabfa69c92",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "c7a1cb73-2e5a-52f7-8544-b6c39bdd7551",
+        "name": "Unknown route",
+        "url": "api/does-not-exist",
+        "method": "get",
+        "sortNum": 10023,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "404"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "c01b5c0f-c9a8-52f9-9845-c7607e074f41",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "Create student (admin)",
+        "url": "api/students",
+        "method": "post",
+        "sortNum": 10024,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Ngozi Eze\",\n  \"email\": \"ngozi.eze@school.com\",\n  \"phone\": \"+2348030000001\",\n  \"classId\": 1,\n  \"class\": \"JSS1 Gold\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "201"
+          },
+          {
+            "type": "set-env-var",
+            "custom": "json.data.student.id",
+            "action": "setto",
+            "value": "{{studentId}}"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.student.name",
+            "action": "istype",
+            "value": "string"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "d62d15f6-e475-5a30-8dc2-abb21185fb9b",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "Create student (unknown classId)",
+        "url": "api/students",
+        "method": "post",
+        "sortNum": 10025,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Bad Class\",\n  \"email\": \"badclass@school.com\",\n  \"classId\": 999,\n  \"class\": \"Nope\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "400"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "bca24ea9-c7da-5d2b-a8d4-86f9cca610d0",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "Create student (invalid phone)",
+        "url": "api/students",
+        "method": "post",
+        "sortNum": 10026,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Bad Phone\",\n  \"email\": \"badphone@school.com\",\n  \"phone\": \"123\",\n  \"classId\": 1,\n  \"class\": \"JSS1 Gold\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "400"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "5d71dd95-37dc-53d7-8417-ea2c605d5790",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "List students",
+        "url": "api/students",
+        "method": "get",
+        "sortNum": 10027,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.students",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "8fb0e853-2b97-524e-9e47-67f853851864",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "List students (filtered by class)",
+        "url": "api/students?classId=1",
+        "method": "get",
+        "sortNum": 10028,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.total",
+            "action": "istype",
+            "value": "number"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "52344967-425a-55b0-8754-edff7c70ac87",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "List students (paginated)",
+        "url": "api/students?page=1&limit=2",
+        "method": "get",
+        "sortNum": 10029,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.totalPages",
+            "action": "istype",
+            "value": "number"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "9d71910f-b83a-5468-91d7-a1f787c807cf",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "Get my profile",
+        "url": "api/students/me",
+        "method": "get",
+        "sortNum": 10030,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{studentToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.student",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "f39adc14-c301-501a-8293-d136898584ed",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "Get student by id",
+        "url": "api/students/{{studentId}}",
+        "method": "get",
+        "sortNum": 10031,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.student",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "34ca546e-1277-596d-8042-893a971e0b5b",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "Get missing student",
+        "url": "api/students/9999",
+        "method": "get",
+        "sortNum": 10032,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "404"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "50217a75-aaa6-5656-88a1-bb51728669be",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "Update student",
+        "url": "api/students/{{studentId}}",
+        "method": "put",
+        "sortNum": 10033,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"phone\": \"+2348030000099\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "48b26f36-4d86-5583-ac7a-7eb4797383e1",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "Update student (invalid phone)",
+        "url": "api/students/{{studentId}}",
+        "method": "put",
+        "sortNum": 10034,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"phone\": \"123\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "400"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "ac3b8e37-7e23-5244-80ed-7ca6242699d3",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "Delete student",
+        "url": "api/students/{{studentId}}",
+        "method": "delete",
+        "sortNum": 10035,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.id",
+            "action": "istype",
+            "value": "number"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "50587067-6d2b-5437-95cb-ce2df21b07d3",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "ca1896fa-3606-5cfe-9a3f-eec10e13c5cc",
+        "name": "Delete student (already gone)",
+        "url": "api/students/{{studentId}}",
+        "method": "delete",
+        "sortNum": 10036,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "404"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "a6d72fa7-b815-5a91-8eac-5df07a8db075",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "d654c91f-ba4f-5a93-a526-43f49b472a86",
+        "name": "Create teacher (admin)",
+        "url": "api/teachers",
+        "method": "post",
+        "sortNum": 10037,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Ibrahim Musa\",\n  \"email\": \"ibrahim.musa@school.com\",\n  \"phone\": \"+2348040000001\",\n  \"subject\": \"Chemistry\",\n  \"password\": \"Teacher@123\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "201"
+          },
+          {
+            "type": "set-env-var",
+            "custom": "json.data.teacher.id",
+            "action": "setto",
+            "value": "{{teacherId}}"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "742731f8-db66-5cc5-96c8-b4d247b42cbd",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "d654c91f-ba4f-5a93-a526-43f49b472a86",
+        "name": "Create teacher (duplicate email)",
+        "url": "api/teachers",
+        "method": "post",
+        "sortNum": 10038,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Ibrahim Musa\",\n  \"email\": \"ibrahim.musa@school.com\",\n  \"subject\": \"Chemistry\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "400"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "532ef1b2-ff30-5c47-bb94-106ae1df5f30",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "d654c91f-ba4f-5a93-a526-43f49b472a86",
+        "name": "List teachers",
+        "url": "api/teachers",
+        "method": "get",
+        "sortNum": 10039,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.teachers",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "5a6910bc-723d-5c6c-9f1c-900af4996c5b",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "d654c91f-ba4f-5a93-a526-43f49b472a86",
+        "name": "Get teacher by id",
+        "url": "api/teachers/{{teacherId}}",
+        "method": "get",
+        "sortNum": 10040,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.teacher",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "cf4a15c8-ffc3-5180-a906-bcdf23062b65",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "d654c91f-ba4f-5a93-a526-43f49b472a86",
+        "name": "Update teacher",
+        "url": "api/teachers/{{teacherId}}",
+        "method": "put",
+        "sortNum": 10041,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"subject\": \"Physics\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "82e1b934-070f-51bc-bf44-66cbbe87da36",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "d654c91f-ba4f-5a93-a526-43f49b472a86",
+        "name": "Delete teacher",
+        "url": "api/teachers/{{teacherId}}",
+        "method": "delete",
+        "sortNum": 10042,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "b84b59d4-94dd-519b-9a2c-b5a3913307b9",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "067f4d59-75db-5d9f-b91f-28f987acd596",
+        "name": "Create class (admin)",
+        "url": "api/classes",
+        "method": "post",
+        "sortNum": 10043,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"JSS3 Gold\",\n  \"description\": \"JSS3 Gold class\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "201"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "0a19525d-8495-5035-ad86-546627a7fc5e",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "067f4d59-75db-5d9f-b91f-28f987acd596",
+        "name": "Create class (duplicate name)",
+        "url": "api/classes",
+        "method": "post",
+        "sortNum": 10044,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"JSS3 Gold\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "409"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "34947a62-426d-5fa7-bdb1-2d1f129c0bc4",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "067f4d59-75db-5d9f-b91f-28f987acd596",
+        "name": "List classes",
+        "url": "api/classes",
+        "method": "get",
+        "sortNum": 10045,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.classes",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "2d52b3bb-a501-5583-ba76-02821c450b87",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "067f4d59-75db-5d9f-b91f-28f987acd596",
+        "name": "Get class with roster",
+        "url": "api/classes/1",
+        "method": "get",
+        "sortNum": 10046,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.students",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "221294fa-ecfc-5798-a7e4-0c06366686fd",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "067f4d59-75db-5d9f-b91f-28f987acd596",
+        "name": "Get missing class",
+        "url": "api/classes/9999",
+        "method": "get",
+        "sortNum": 10047,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "404"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "eebacc97-9771-57a9-908c-9fb50b8178ad",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "067f4d59-75db-5d9f-b91f-28f987acd596",
+        "name": "Delete class that has students",
+        "url": "api/classes/1",
+        "method": "delete",
+        "sortNum": 10048,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "409"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "46523c33-62bb-57fb-82d3-0625ebab204f",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "067f4d59-75db-5d9f-b91f-28f987acd596",
+        "name": "Update class",
+        "url": "api/classes/4",
+        "method": "put",
+        "sortNum": 10049,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"description\": \"Updated by Thunder Client\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "2c36d360-187f-5487-b084-eab147a4c1b3",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "067f4d59-75db-5d9f-b91f-28f987acd596",
+        "name": "Delete class",
+        "url": "api/classes/4",
+        "method": "delete",
+        "sortNum": 10050,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "ee95266a-08ee-5672-bdf5-24a7365d8043",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "730d74db-10a1-54e2-abd9-937a22b38eff",
+        "name": "Create subject (admin)",
+        "url": "api/subjects",
+        "method": "post",
+        "sortNum": 10051,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Chemistry\",\n  \"code\": \"CHE\",\n  \"description\": \"Chemistry subject\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "201"
+          },
+          {
+            "type": "set-env-var",
+            "custom": "json.data.subject.id",
+            "action": "setto",
+            "value": "{{subjectId}}"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "e9f50a61-799d-5589-82fb-f5d08f42b2f0",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "730d74db-10a1-54e2-abd9-937a22b38eff",
+        "name": "Create subject (duplicate code)",
+        "url": "api/subjects",
+        "method": "post",
+        "sortNum": 10052,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Chemistry Advanced\",\n  \"code\": \"CHE\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "409"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "624f4b30-5571-52cd-93c5-9f4a663443a6",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "730d74db-10a1-54e2-abd9-937a22b38eff",
+        "name": "Create subject (invalid code)",
+        "url": "api/subjects",
+        "method": "post",
+        "sortNum": 10053,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Bad Code\",\n  \"code\": \"bad code!\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "400"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "dcadf57d-2bb3-5210-8786-47fa07b32a95",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "730d74db-10a1-54e2-abd9-937a22b38eff",
+        "name": "List subjects",
+        "url": "api/subjects",
+        "method": "get",
+        "sortNum": 10054,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.subjects",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "4d25eeb4-683c-5c69-b508-f8e2e36adb92",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "730d74db-10a1-54e2-abd9-937a22b38eff",
+        "name": "Get subject by id",
+        "url": "api/subjects/{{subjectId}}",
+        "method": "get",
+        "sortNum": 10055,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.subject",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "d204c8ce-9a0c-5d26-84a8-adc641708413",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "730d74db-10a1-54e2-abd9-937a22b38eff",
+        "name": "Update subject",
+        "url": "api/subjects/{{subjectId}}",
+        "method": "put",
+        "sortNum": 10056,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"description\": \"Updated by Thunder Client\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "015ed316-5362-5584-80b6-8e633571824a",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "730d74db-10a1-54e2-abd9-937a22b38eff",
+        "name": "Delete subject",
+        "url": "api/subjects/{{subjectId}}",
+        "method": "delete",
+        "sortNum": 10057,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "a8d52c08-b773-5e52-b8ba-36cc3a6e59b6",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "78c29890-f467-52c9-8c66-5b8cd5fa5bc3",
+        "name": "Create result (teacher)",
+        "url": "api/results",
+        "method": "post",
+        "sortNum": 10058,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{teacherToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"studentId\": 1,\n  \"subjectId\": 4,\n  \"score\": 95,\n  \"term\": \"third\",\n  \"session\": \"2025/2026\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "201"
+          },
+          {
+            "type": "set-env-var",
+            "custom": "json.data.result.id",
+            "action": "setto",
+            "value": "{{resultId}}"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.result.grade",
+            "action": "contains",
+            "value": "A"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "d0ec3725-c9c3-5004-a352-9da9248ca702",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "78c29890-f467-52c9-8c66-5b8cd5fa5bc3",
+        "name": "Create result (score above 100)",
+        "url": "api/results",
+        "method": "post",
+        "sortNum": 10059,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{teacherToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"studentId\": 2,\n  \"subjectId\": 4,\n  \"score\": 150,\n  \"term\": \"third\",\n  \"session\": \"2025/2026\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "400"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "aec9c765-c4c4-5e66-a571-87a2a3add116",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "78c29890-f467-52c9-8c66-5b8cd5fa5bc3",
+        "name": "Create result (invalid term)",
+        "url": "api/results",
+        "method": "post",
+        "sortNum": 10060,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{teacherToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"studentId\": 2,\n  \"subjectId\": 4,\n  \"score\": 70,\n  \"term\": \"fourth\",\n  \"session\": \"2025/2026\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "400"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "9a6ba965-2b83-578f-8c9c-34ce1c3673ed",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "78c29890-f467-52c9-8c66-5b8cd5fa5bc3",
+        "name": "Create result (invalid session)",
+        "url": "api/results",
+        "method": "post",
+        "sortNum": 10061,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{teacherToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"studentId\": 2,\n  \"subjectId\": 4,\n  \"score\": 70,\n  \"term\": \"third\",\n  \"session\": \"1999/2000\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "400"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "816c08e3-bc48-5560-a835-1b84e0e82b7f",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "78c29890-f467-52c9-8c66-5b8cd5fa5bc3",
+        "name": "Create result (duplicate)",
+        "url": "api/results",
+        "method": "post",
+        "sortNum": 10062,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{teacherToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"studentId\": 1,\n  \"subjectId\": 4,\n  \"score\": 95,\n  \"term\": \"third\",\n  \"session\": \"2025/2026\"\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "409"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "86cc0d58-e088-5afd-855d-842932ef9f84",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "78c29890-f467-52c9-8c66-5b8cd5fa5bc3",
+        "name": "List results (filtered)",
+        "url": "api/results?studentId=1&term=first",
+        "method": "get",
+        "sortNum": 10063,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.results",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "a9463a0a-d1a8-57e3-a37d-631c7f54e115",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "78c29890-f467-52c9-8c66-5b8cd5fa5bc3",
+        "name": "List results (student sees own)",
+        "url": "api/results",
+        "method": "get",
+        "sortNum": 10064,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{studentToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.results",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "95761e09-efbc-53ef-b517-17731bcde0bf",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "78c29890-f467-52c9-8c66-5b8cd5fa5bc3",
+        "name": "Get result by id",
+        "url": "api/results/{{resultId}}",
+        "method": "get",
+        "sortNum": 10065,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.result",
+            "action": "istype",
+            "value": "object"
+          },
+          {
+            "type": "json-query",
+            "custom": "json.data.student",
+            "action": "istype",
+            "value": "object"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "32755d10-cf34-5f81-9e0d-b1b4c7301184",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "78c29890-f467-52c9-8c66-5b8cd5fa5bc3",
+        "name": "Update result (teacher)",
+        "url": "api/results/{{resultId}}",
+        "method": "put",
+        "sortNum": 10066,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{teacherToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"score\": 88\n}",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      },
+      {
+        "_id": "fdaedd6d-efaa-5cb4-a504-d12f109ecd31",
+        "colId": "1dc7b32a-4666-51ba-af0e-8bafb7449f3c",
+        "containerId": "78c29890-f467-52c9-8c66-5b8cd5fa5bc3",
+        "name": "Delete result (admin)",
+        "url": "api/results/{{resultId}}",
+        "method": "delete",
+        "sortNum": 10067,
+        "created": "2026-01-01T00:00:00.000Z",
+        "modified": "2026-01-01T00:00:00.000Z",
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{adminToken}}",
+            "type": "text"
+          }
+        ],
+        "params": [],
+        "body": {
+          "type": "none",
+          "raw": "",
+          "form": []
+        },
+        "tests": [
+          {
+            "type": "res-code",
+            "custom": "",
+            "action": "equal",
+            "value": "200"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "preScripts": [],
+        "postScripts": []
+      }
+    ]
+  }
+]
